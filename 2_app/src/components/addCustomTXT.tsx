@@ -11,6 +11,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useRecordsContext } from "@/contexts/useRecords";
+import { DNS_SERVERS } from "@/lib/checkAddressQuery";
 import {
   CheckCheckIcon,
   ListRestart,
@@ -31,13 +32,7 @@ export function AddCustomTXT({ disabled }: { disabled: boolean }) {
   const [newRecord, setNewRecord] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  const dnsServers = [
-    { name: "Cloudflare (1.1.1.1) Default", value: "1.1.1.1" },
-    { name: "Google (8.8.8.8)", value: "8.8.8.8" },
-    { name: "OpenDNS (208.67.222.222)", value: "208.67.222.222" },
-    { name: "Quad9 (9.9.9.9)", value: "9.9.9.9" },
-    { name: "NextDNS (45.90.28.0)", value: "45.90.28.0" },
-  ];
+  const dnsServers = DNS_SERVERS;
 
   const closeModal = () => {
     setIsOpen(false);
