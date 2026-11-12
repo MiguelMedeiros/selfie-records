@@ -29,9 +29,12 @@ export default function Home() {
       filters = records ? records.join(",") : "";
     }
 
-    const response = await fetch(
-      `/api/checkAddress?name=${recordName}&filters=${filters}&dnsServer=${dnsServer}`
-    );
+    const query = new URLSearchParams({
+      name: recordName,
+      filters,
+      dnsServer,
+    });
+    const response = await fetch(`/api/checkAddress?${query}`);
 
     const data = await response.json();
 
